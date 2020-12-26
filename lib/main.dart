@@ -4,6 +4,7 @@ import 'package:flutter_app/pages/allTasks.dart';
 import 'package:flutter_app/pages/completedTasks.dart';
 import 'package:flutter_app/pages/incompleteTasks.dart';
 import 'package:flutter_app/pages/newTask.dart';
+import 'package:flutter_app/pages/splash.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: myPage(),
+      home: Splash(),
     );
   }
 }

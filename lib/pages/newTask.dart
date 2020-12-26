@@ -11,7 +11,6 @@ class NewTask extends StatefulWidget {
 
 class _NewTaskState extends State<NewTask> {
   String taskName;
-
   bool isComplete = false;
 
   @override
