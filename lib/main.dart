@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/myProvider.dart';
 import 'package:flutter_app/pages/allTasks.dart';
 import 'package:flutter_app/pages/completedTasks.dart';
 import 'package:flutter_app/pages/incompleteTasks.dart';
 import 'package:flutter_app/pages/newTask.dart';
 import 'package:flutter_app/pages/splash.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,9 +16,14 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Splash(),
+    return ChangeNotifierProvider(
+      create: (context){
+        return MyProvider();
+      },
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Splash(),
+      ),
     );
   }
 }

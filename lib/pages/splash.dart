@@ -1,15 +1,21 @@
 import 'package:custom_splash/custom_splash.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/db/dbHelper.dart';
+import 'package:flutter_app/myProvider.dart';
+import 'package:provider/provider.dart';
 import '../main.dart';
 
+// ignore: must_be_immutable
 class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    DBHelper.dbHelper.selectAllTasks().then((value){
+      Provider.of<MyProvider>(context, listen: false).setTasks(value);
+    });
     return Scaffold(
-      body: MaterialApp(
-        home: CustomSplash(
+        body: CustomSplash(
           imagePath: 'assets/logo_flutter.png',
-          backGroundColor: Colors.deepOrange,
+          backGroundColor: Colors.white,
           animationEffect: 'zoom-in',
           logoSize: 200,
           home: myPage(),
@@ -18,14 +24,12 @@ class Splash extends StatelessWidget {
           type: CustomSplashType.StaticDuration,
           outputAndHome: op,
         ),
-      ),
     );
   }
 
   Map<int, Widget> op = {1: myPage(), 2: myPage()};
 
-  Function duringSplash = () {
-    print('Something background process');
+  Function duringSplash = (){
     int a = 123 + 23;
     print(a);
 
